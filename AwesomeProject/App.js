@@ -8,61 +8,54 @@ import {
   Button,
   TouchableOpacity,
   ToastAndroid,
-  // StatusBar,
+  Platform
 } from 'react-native';
 
 export default class yeopWorld extends Component {
-
-  constructor() {
-    super();
-    this.state = {
-      imageLocation: './images/lockOn.png'
+  
+  constructor(props) {
+    super(props);
+    this.state={
+      imageLocation: './images/lockOff.png'
     }
   }
 
-  _switchLockImage() {
+  _switchLockState=()=> {
     this.setState({
-      imageLocation: './images/lockOff.png'
+      imageLocation: './images/lockOn.png'
     })
   };
 
   _onProessButton() {
     ToastAndroid.show("토스트 토스트!", ToastAndroid.SHORT);
   };
-  
-  _showAlert(){
+
+  _showAlert() {
     alert('alert click');
   };
 
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.topContainer}/>
-        <View style={styles.bottomContainer}>
 
-          <TouchableOpacity style={styles.lockContainer} activeOpacity={1} onPress={this._switchLockImage}>
+        <View style={styles.topContainer}>
+        </View>
+
+        <View style={styles.bottomContainer}>
+          <TouchableOpacity style={styles.lockContainer} activeOpacity={1} onPress={this._switchLockState}>
             <Image style={styles.buttonLock} source={require('./images/lockOn.png')} />
           </TouchableOpacity>
-
           <TouchableOpacity style={styles.recordContainer} activeOpacity={1} onPress={this._onProessButton}>
             <Image style={styles.buttonRecord} source={require('./images/startRecord.png')} />
           </TouchableOpacity>
-
           <Image style={styles.buttonGraph} source={require('./images/chart.png')} />
-
         </View>
 
-        {/*         
-        <Text style={styles.title}>
-          asdfasdf
-        </Text> */}
-
       </View>
-
     )
   }
 }
-
+ 
 const showToast = () => {
   ToastAndroid.show("A pikachu appeared nearby !", ToastAndroid.SHORT);
 }
