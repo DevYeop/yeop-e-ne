@@ -17,9 +17,15 @@ export default class yeopWorld extends Component {
     super(props);
     this.state={
       imageLocation: './images/lockOff.png'
+      // test
     }
   }
 
+  _test() {
+
+    //nothing
+  }
+  
   _switchLockState=()=> {
     this.setState({
       imageLocation: './images/lockOn.png'
